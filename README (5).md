@@ -83,22 +83,24 @@ The dataset used to train the model is small so that model accuracy is low.
 ## Machine Learning Pipeline
 
 1- Upload Training Data:
-
-   . download a small subset of Amazon Bin Image Dataset.
-   
-   . split the downloaded subset randomly over each individual object class and divide it into; 80% for training set, 5% for validation set and 15% for testing set.        
-   . uploading train, valid and test datasets to S3 bucket.
+        1- download a small subset of Amazon Bin Image Dataset.
+        
+        2- split the downloaded subset randomly over each individual object class and divide it into; 80% for training set, 5% for validation set and 15% for testing               set.   
+        
+        3- uploading train, valid and test datasets to S3 bucket.
   
-2- Model Training Script: 
+2- Model Training Script:
 
-  . train.py script is created to be used to train a pretrained model with fixed hyperparameters.
+      train.py script is created to be used to train a pretrained model with fixed hyperparameters.
 
 
 3- Train in SageMaker: install necessary dependencies and set up training estimator and use SageMaker to run that training script and   train the model.
 
 4- Perform a prediction on the model:
-   . Deploy the model to an endpoint.
-   . test the deployed endpoint using random object images.
+
+     1- Deploy the model to an endpoint.
+     
+     2- test the deployed endpoint using random object images.
 
 
 
@@ -107,7 +109,8 @@ The dataset used to train the model is small so that model accuracy is low.
 ## Hyperparameter Tuning:
 train.py scipt is trained again using the following ranges for the hyperparameters to finetune the model:
 
-hyperparameter_ranges= {"lr": ContinuousParameter(0.001, 0.1),
+hyperparameter_ranges= {
+                        "lr": ContinuousParameter(0.001, 0.1),
 
                         "epochs":IntegerParameter(1,5),
                         
@@ -168,6 +171,8 @@ The prediction results:
 ![22](https://user-images.githubusercontent.com/81697137/233733990-25281f84-4bc9-4f7b-acce-43688d1c3f4d.png)
 ![23](https://user-images.githubusercontent.com/81697137/233734025-6ff98f4f-ed7a-472a-8c7d-99f36101078b.png)
 ![5](https://user-images.githubusercontent.com/81697137/233734146-7e146c2b-1174-4fc1-abed-773b0ece55d0.png)
+![4](https://user-images.githubusercontent.com/81697137/233738703-1bbd9916-90e7-453a-8ede-d2d98667a694.png)
+
 
 
 
@@ -196,7 +201,6 @@ SPOT INSTANCE:
 . At the end of trained job Managed Spot Training savings was 26.8% which is counted as follow:(1- billable seconds/Training seconds)*100
  
 
-## Multi-Instance Training:
 
 
 
